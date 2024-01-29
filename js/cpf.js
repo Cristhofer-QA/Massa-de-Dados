@@ -1,7 +1,7 @@
 function gerarCpf() {
-    const uf = document.querySelector('#uf').value;
-    const formatacao = document.querySelector('#formatacao').value;
-    const quantidade = document.querySelector('#quantidade-cpf').value;
+    const uf = document.querySelector('#filtro-uf-cpf').value;
+    const formatacao = document.querySelector('#filtro-formacatao-cpj').value;
+    const quantidade = document.querySelector('#filtro-quantidade-cpf').value;
     const imprimir = document.querySelector('#retorno-cpf');
 
     if (quantidade != '') {
