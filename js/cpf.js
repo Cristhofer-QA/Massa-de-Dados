@@ -1,10 +1,11 @@
 function gerarCpf() {
-    const uf = document.querySelector('#filtro-uf-cpf').value;
-    const formatacao = document.querySelector('#filtro-formacatao-cpj').value;
-    const quantidade = document.querySelector('#filtro-quantidade-cpf').value;
-    const imprimir = document.querySelector('#retorno-cpf');
+    const uf = document.querySelector('#filtro-uf').value;
+    const formatacao = document.querySelector('#filtro-formacatao-cpfCnpj').value;
+    const quantidade = document.querySelector('#filtro-quantidade').value;
+    const imprimir = document.querySelector('#textArea');
 
     if (quantidade != '') {
+
         const cpf = new MultiplosCpf(uf, formatacao, quantidade);
         imprimir.value = cpf.listaCpf;
     } else {
@@ -116,7 +117,6 @@ class GerarCpf {
 
 class MultiplosCpf {
     listaCpf = '';
-
     constructor(regiaoFiscal, tipoPontuacao, quantidades) {
         this.gerarMultiplosCpf(regiaoFiscal, tipoPontuacao, quantidades);
     };
@@ -124,7 +124,14 @@ class MultiplosCpf {
     gerarMultiplosCpf(regiaoFiscal, tipoPontuacao, quantidades) {
         for (let i = 0; i < quantidades; i++) {
             const cpf = new GerarCpf(regiaoFiscal, tipoPontuacao);
-            this.listaCpf = this.listaCpf + cpf.cpf_valido + "\n";
+            if (i < quantidades - 1) {
+                this.listaCpf = this.listaCpf + cpf.cpf_valido + "\n";
+            } else {
+                this.listaCpf = this.listaCpf + cpf.cpf_valido;
+            }
         };
     };
 };
+
+
+

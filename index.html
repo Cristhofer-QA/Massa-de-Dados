@@ -47,6 +47,7 @@
 
         <div class="gerador">
             <div class="modal" id="modal">
+                <div class="mensagem-inicial">Selecione um gerador</div> 
             </div>
         </div>
 
@@ -98,51 +99,7 @@
             </div>
         </div>
 
-        <div class="modal-container" id="modal-cpf">
-            <div class="modal container">
-                <div class="fechar">
-                    <button class="btn-fechar" onclick="abrirEfechar('modal-cpf'), scriptsFecharGeradorCPF()">X</button>
-                </div>
-                <h2>Gerador de CPF</h2>
-                <fieldset>
-                    <legend>Filtros</legend>
-
-                    <div class="filtros" id="geradorCpf">
-                        <div class="agrupador-mobile">
-                            <div class="elemento-filtros">
-                                <label for="uf">UF</label>
-                                <select id="uf" class="combobox combo-uf" required>
-                                </select>
-                            </div>
-                            <div class="elemento-filtros">
-                                <label for="quantidade-cpf">Quantidade*</label>
-                                <input type="number" id="quantidade-cpf" placeholder="Quantidade" min="1" max=400000
-                                    required onfocusout="limitarNumeroMaximo('quantidade-cpf', 400000)">
-                            </div>
-
-                        </div>
-                        <div class="agrupador-mobile">
-                            <div class="elemento-filtros">
-                                <label for="formatacao">Formatação</label>
-                                <select id="formatacao" class="combobox" required>
-                                </select>
-                            </div>
-                            <div class="btn-gerar">
-                                <input type="button" id="bt-gerar-cpf" value="Gerar" onclick="gerarCpf(gerarCpf)">
-                            </div>
-
-                        </div>
-                    </div>
-                </fieldset>
-
-                <div class="retorno-container container">
-                    <textarea class="retorno" id="retorno-cpf" disabled></textarea>
-                </div>
-                <div class="btn-copiar" id="btn-copiar-cpf">
-                    Copiar
-                </div>
-            </div>
-        </div>
+    
 
         <div class="modal-container" id="modal-cnpj">
             <div class="modal container">

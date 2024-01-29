@@ -1,33 +1,33 @@
-
-//document.getElementById('spanGeradorNome').addEventListener('click', scriptAbrirGeradorNome);
 document.getElementById('spanGeradorCpf').addEventListener('click', gerarModalCpf);
-// document.getElementById('spanGeradorCnpj').addEventListener('click', scriptAbrirGeradorCNPJ);
-// document.getElementById('spanGeradorTelefone').addEventListener('click', scriptAbrirGeradorTelefone);
-// document.getElementById('btn-copiar-nome').addEventListener('click', copiarNome);
-// document.getElementById('btn-copiar-cpf').addEventListener('click', copiarCpf);
-// document.getElementById('btn-copiar-cnpj').addEventListener('click', copiarCnpj);
-// document.getElementById('btn-copiar-telefone').addEventListener('click', copiarTelefone);
-// document.getElementById('formatacao-telefones').addEventListener('focus', inativarCampoOperadoraTelefones);
 document.getElementById('menu-hambuguer').addEventListener('click', abrirEfecharMenu);
-
-
-
 
 function gerarModalCpf() {
     limparModal()
     gerarTopoModal('Gerador de CPF')
     gerarFieldsetFiltros();
     gerarDivAgrupadorMobile(2);
-    gerarDivElementosFiltros('agrupador-1', 'uf-cpf')
-    gerarInputsTipoSelect('uf-cpf', 'filtro-uf-cpf', 'UF')
-    gerarDivElementosFiltros('agrupador-1', 'quantidade-cpf')
-    gerarInputQuantidade('quantidade-cpf', 'filtro-quantidade-cpf', 'Quantidade*')
-    criarComboUf('filtro-uf-cpf');
-    gerarDivElementosFiltros('agrupador-2', 'formatacao-cpf')
-    gerarInputsTipoSelect('formatacao-cpf', 'filtro-formacatao-cpj', 'Formatação')
-    criarComboFormatacaoCpfCnpj('filtro-formacatao-cpj');
-    criarBotaoGerar('agrupador-2')
-    criarCampoRetornoDados('modal', 'retorno-cpf')
+    gerarFiltroUF();
+    gerarInputQuantidade()
+    gerarFiltroFormatacaoCpfCnpj()
+    criarBotaoGerar('agrupador-2');
+    criarCampoRetornoDados();
+    criarBotaoCopiar();
+};
+
+function gerarFiltroUF() {
+    gerarDivElementosFiltros('agrupador-1', 'uf');
+    gerarInputsTipoSelect('uf', 'filtro-uf', 'UF');
+    criarComboUf('filtro-uf');
+};
+
+function gerarInputsTipoSelect(idDivPai, idElemento, nomeLabel) {
+    let elementoPai = document.getElementById(idDivPai);
+    let newLabel = document.createElement('label')
+    let newSelect = document.createElement('select')
+    newLabel.setAttribute('for', idElemento);
+    newSelect.setAttribute('id', idElemento);
+    newLabel.innerHTML = nomeLabel;
+    elementoPai.append(newLabel, newSelect)
 };
 
 function limparModal() {
@@ -62,14 +62,6 @@ function gerarDivAgrupadorMobile(quantidadeDivs) {
     }
 };
 
-function gerarDivElementosFiltros(idDivPai, idDiv) {
-    let container = document.getElementById(idDivPai)
-    let newDiv = document.createElement("div")
-    newDiv.setAttribute('class', 'elemento-filtros');
-    newDiv.setAttribute('id', idDiv);
-    container.append(newDiv)
-};
-
 function gerarInputsTipoNumero(idDivPai, idElemento, nomeLabel) {
     let elementoPai = document.getElementById(idDivPai);
     let newLabel = document.createElement('label')
@@ -81,27 +73,28 @@ function gerarInputsTipoNumero(idDivPai, idElemento, nomeLabel) {
     elementoPai.append(newLabel, newInput)
 };
 
-function gerarInputQuantidade(idDivPai, idElemento, nomeLabel) {
-    gerarInputsTipoNumero(idDivPai, idElemento, nomeLabel);
-    inserirOnfocusoutCampo(idElemento)
-    inserirPlaceholder(idElemento, 'Quantidade')
+function gerarInputQuantidade() {
+    gerarDivElementosFiltros('agrupador-1', 'quantidade')
+    gerarInputsTipoNumero('quantidade', 'filtro-quantidade', 'Quantidade*');
+    inserirOnfocusoutCampo('filtro-quantidade')
+    inserirPlaceholder('filtro-quantidade', 'Quantidade')
 };
 
-function gerarInputsTipoSelect(idDivPai, idElemento, nomeLabel) {
-    let elementoPai = document.getElementById(idDivPai);
-    let newLabel = document.createElement('label')
-    let newSelect = document.createElement('select')
-    newLabel.setAttribute('for', idElemento);
-    newSelect.setAttribute('id', idElemento);
-    newLabel.innerHTML = nomeLabel;
-    elementoPai.append(newLabel, newSelect)
+
+function gerarDivElementosFiltros(idDivPai, idDiv) {
+    let container = document.getElementById(idDivPai)
+    let newDiv = document.createElement("div")
+    newDiv.setAttribute('class', 'elemento-filtros');
+    newDiv.setAttribute('id', idDiv);
+    container.append(newDiv)
 };
+
 
 function criarBotaoGerar(idElementoPai) {
     let elementoPai = document.getElementById(idElementoPai);
     let divBotao = document.createElement('div')
     let botao = document.createElement('input')
-    botao.type ='button';
+    botao.type = 'button';
     botao.setAttribute('id', 'bt-gerar-cpf')
     botao.value = 'Gerar'
     botao.setAttribute('onclick', 'gerarCpf(gerarCpf)')
@@ -110,8 +103,8 @@ function criarBotaoGerar(idElementoPai) {
     divBotao.appendChild(botao)
 };
 
-function criarCampoRetornoDados(idElementoPai, idTextArea) {
-    let elementoPai = document.getElementById(idElementoPai)
+function criarCampoRetornoDados() {
+    let elementoPai = document.getElementById('modal')
     let divRetorno = document.createElement('div');
     let background = document.createElement('div');
     let textArea = document.createElement('textarea');
@@ -119,11 +112,21 @@ function criarCampoRetornoDados(idElementoPai, idTextArea) {
     background.setAttribute('id', 'background-modal');
     divRetorno.setAttribute('class', 'retorno-container');
     textArea.setAttribute('class', 'retorno');
-    textArea.setAttribute('id', idTextArea)
-    textArea.setAttribute('disabled','disabled')
+    textArea.setAttribute('id', 'textArea')
+    textArea.setAttribute('disabled', 'disabled')
     elementoPai.append(divRetorno)
     divRetorno.append(background)
     divRetorno.append(textArea)
+};
+
+function criarBotaoCopiar() {
+    let elementoPai = document.getElementById('modal');
+    let botaoCopiar = document.createElement('div');
+    botaoCopiar.setAttribute('class', 'btn-copiar');
+    botaoCopiar.setAttribute('id', 'btn-copiar');
+    botaoCopiar.setAttribute('onclick', 'copiar()');
+    botaoCopiar.innerHTML = 'Copiar';
+    elementoPai.append(botaoCopiar)
 };
 
 function inserirPlaceholder(idElemento, placeholder) {
@@ -133,8 +136,19 @@ function inserirPlaceholder(idElemento, placeholder) {
 
 function inserirOnfocusoutCampo(idElemento) {
     let elemento = document.getElementById(idElemento)
-    elemento.setAttribute('onfocusout', 'limitarNumeroMaximo("'+ idElemento + '", 400000)')
+    elemento.setAttribute('onfocusout', 'limitarNumeroMaximo("' + idElemento + '", 400000)')
 };
+
+function copiar() {
+    let retorno = document.getElementById('textArea').value;
+    navigator.clipboard.writeText(retorno);
+}
+
+function gerarFiltroFormatacaoCpfCnpj() {
+    gerarDivElementosFiltros('agrupador-2', 'formatacao-cpfCnpj')
+    gerarInputsTipoSelect('formatacao-cpfCnpj', 'filtro-formacatao-cpfCnpj', 'Formatação')
+    criarComboFormatacaoCpfCnpj('filtro-formacatao-cpfCnpj');
+}
 
 function criarComboFormatacaoCpfCnpj(selectorCampo) {
     const formatacao = ['Pontos e traço', 'Apenas pontos', 'Apenas traço', 'Sem formatação'];
@@ -159,9 +173,6 @@ function criarOptionsSelectValorDiferenteTexto(seletorCampo, listaElementos) {
         select.appendChild(new Option(chave, elemento + 1));
     });
 };
-
-
-
 
 
 
@@ -196,4 +207,15 @@ function limitarNumeroMaximo(element, maximo) {
     if (campoParaObservar.value > max) {
         campoParaObservar.value = max;
     }
+};
+
+{
+    let itensMenu = document.querySelectorAll('.item-menu');
+    itensMenu.forEach(
+        item => {
+            item.onclick = () => {
+                itensMenu.forEach(item => item.classList.remove('menu-clicado'))
+                item.classList.add('menu-clicado')
+            }
+        })
 };
