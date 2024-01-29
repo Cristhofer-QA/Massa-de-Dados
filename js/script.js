@@ -19,10 +19,14 @@ function gerarModalCpf() {
     gerarFieldsetFiltros();
     gerarDivAgrupadorMobile(2);
     gerarDivElementosFiltros('agrupador-1', 'uf-cpf')
-    gerarInputsTipoSelect('uf-cpf', 'filtro-uf-cpj', 'UF')
+    gerarInputsTipoSelect('uf-cpf', 'filtro-uf-cpf', 'UF')
     gerarDivElementosFiltros('agrupador-1', 'quantidade-cpf')
     gerarInputsTipoNumero('quantidade-cpf', 'filtro-quantidade-cpf', 'Quantidade*')
-    criarComboUf('filtro-uf-cpj');
+    criarComboUf('filtro-uf-cpf');
+    gerarDivElementosFiltros('agrupador-2', 'formatacao-cpf')
+    gerarInputsTipoSelect('formatacao-cpf', 'filtro-formacatao-cpj', 'Formatação')
+    criarComboFormatacaoCpfCnpj('filtro-formacatao-cpj');
+    criarBotaoGerar('agrupador-2')
 }
 
 function limparModal() {
@@ -86,6 +90,33 @@ function gerarInputsTipoSelect(idDivPai, idElemento, nomeLabel) {
     elementoPai.append(newLabel, newSelect)
 }
 
+function criarBotaoGerar(idElementoPai) {
+    let elementoPai = document.getElementById(idElementoPai);
+    let divBotao = document.createElement('div')
+    let botao = document.createElement('input')
+    botao.type ='button';
+    botao.setAttribute('id', 'bt-gerar-cpf')
+    botao.value = 'Gerar'
+    botao.setAttribute('onclick', 'gerarCpf(gerarCpf)')
+    divBotao.setAttribute('class', 'btn-gerar')
+    elementoPai.append(divBotao);
+    divBotao.appendChild(botao)
+}
+
+
+
+
+
+
+
+
+
+
+function criarComboFormatacaoCpfCnpj(selectorCampo) {
+    const formatacao = ['Pontos e traço', 'Apenas pontos', 'Apenas traço', 'Sem formatação'];
+    criarOptionsSelectValorDiferenteTexto(selectorCampo, formatacao);
+};
+
 
 function criarComboUf(selectorCampo) {
     const uf = ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'];
@@ -99,7 +130,12 @@ function criarOptionsSelectValorIgualTexto(seletorCampo, listaElementos) {
     });
 };
 
-
+function criarOptionsSelectValorDiferenteTexto(seletorCampo, listaElementos) {
+    const select = document.getElementById(seletorCampo);
+    listaElementos.forEach(function (chave, elemento) {
+        select.appendChild(new Option(chave, elemento + 1));
+    });
+};
 
 
 
