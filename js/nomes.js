@@ -1,9 +1,9 @@
 function gerarNome() {
 
-    const sexo = document.querySelector('#sexo').value;
-    const formatação = document.querySelector('#tipo-nome').value;
-    const quantidade = document.querySelector('#quantidade-nome').value;
-    const imprimir = document.querySelector('#retorno-nome');
+    const sexo = document.querySelector('#filtro-sexo').value;
+    const formatação = document.querySelector('#filtro-formatacao-nome').value;
+    const quantidade = document.querySelector('#filtro-quantidade').value;
+    const imprimir = document.querySelector('#textArea');
 
     if (quantidade != '') {
         const nomes = new MultiplosNomes(sexo, formatação, quantidade)
@@ -240,8 +240,13 @@ class MultiplosNomes {
     gerarMultiplosNomes(sexo, formatação, quantidade) {
         for (let i = 0; i < quantidade; i++) {
             const geradorNome = new Nome(sexo, formatação);
-            this.listaDeNomesGerados = this.listaDeNomesGerados + geradorNome.nome + "\n";
-        }
-    }
 
-}
+            if (i < quantidade - 1) {
+                this.listaDeNomesGerados = this.listaDeNomesGerados + geradorNome.nome + "\n";
+            } else {
+                this.listaDeNomesGerados = this.listaDeNomesGerados + geradorNome.nome;
+            };
+        };
+    };
+
+};

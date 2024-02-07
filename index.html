@@ -32,12 +32,11 @@
                 <img src="./image/botao-de-menu-de-tres-linhas-horizontais.png" alt="menu haburguer">
             </div>
             <nav id="menu">
-
                 <ul id="lista-menu">
-                    <li class="item-menu" id="spanGeradorNome">Gerador de nomes</li>
-                    <li class="item-menu" id="spanGeradorCpf">Gerador de CPF válido</li>
-                    <li class="item-menu" id="spanGeradorCnpj">Gerador de CNPJ válido</li>
-                    <li class="item-menu" id="spanGeradorTelefone">Gerador de telefone</li>
+                    <li class="item-menu" id="geradorNome">Gerador de nomes</li>
+                    <li class="item-menu" id="geradorCpf">Gerador de CPF válido</li>
+                    <li class="item-menu" id="geradorCnpj">Gerador de CNPJ válido</li>
+                    <li class="item-menu" id="geradorTelefone">Gerador de telefone</li>
                     <li class="item-menu">Gerador de sequência numérica</li>
                     <li class="item-menu">Gerador de pessoa</li>
                 </ul>
@@ -50,157 +49,7 @@
                 <div class="mensagem-inicial">Selecione um gerador</div> 
             </div>
         </div>
-
-
-        <!-- <div class="modal-container" id="modal-nome">
-            <div class="modal container">
-                <div class="fechar">
-                    <button class="btn-fechar"
-                        onclick="abrirEfechar('modal-nome'), scriptsFecharGeradorNome()">X</button>
-                </div>
-                <h2>Gerador de nomes</h2>
-                <fieldset>
-                    <legend>Filtros</legend>
-
-                    <div class="filtros">
-                        <div class="agrupador-mobile">
-                            <div class="elemento-filtros">
-                                <label for="sexo">Sexo</label>
-                                <select id="sexo" class="combobox" required>
-                                </select>
-                            </div>
-                            <div class="elemento-filtros">
-                                <label for="quantidade-nome">Quantidade*</label>
-                                <input type="number" id="quantidade-nome" placeholder="Quantidade" min="1" maxlength="4"
-                                    onfocusout="limitarNumeroMaximo('quantidade-nome', 400000)" required>
-                            </div>
-
-                        </div>
-
-                        <div class="agrupador-mobile">
-                            <div class="elemento-filtros">
-                                <label for="tipo-nome">Formatação</label>
-                                <select id="tipo-nome" class="combobox" required>
-                                </select>
-                            </div>
-                            <div class="btn-gerar">
-                                <input type="button" id="bt-gerar-nome" value="Gerar" onclick="gerarNome()">
-                            </div>
-                        </div>
-                    </div>
-                </fieldset>
-
-                <div class="retorno-container container">
-                    <textarea class="retorno" id="retorno-nome" disabled></textarea>
-                </div>
-                <div class="btn-copiar" id="btn-copiar-nome">
-                    Copiar
-                </div>
-            </div>
-        </div>
-
-    
-
-        <div class="modal-container" id="modal-cnpj">
-            <div class="modal container">
-                <div class="fechar">
-                    <button class="btn-fechar"
-                        onclick="abrirEfechar('modal-cnpj'), scriptsFecharGeradorCNPJ()">X</button>
-                </div>
-                <h2>Gerador de CNPJ</h2>
-                <fieldset>
-                    <legend>Filtros</legend>
-                    <div class="filtros" id="geradorCnpj">
-                        <div class="agrupador-mobile">
-                            <div class="elemento-filtros matriz">
-                                <label for="quantidade-matriz">Número filial</label>
-                                <input type="number" id="quantidade-matriz" placeholder="Filial" value="1" min="1"
-                                    max=9999 required onfocusout="limitarNumeroMaximo('quantidade-matriz', 9999)">
-                            </div>
-                            <div class="elemento-filtros">
-                                <label for="quantidade-cnpj">Quantidade*</label>
-                                <input type="number" id="quantidade-cnpj" placeholder="Quantidade" min="1" max=400000
-                                    required onfocusout="limitarNumeroMaximo('quantidade-cnpj', 400000)">
-                            </div>
-                        </div>
-                        <div class="agrupador-mobile">
-
-                            <div class="elemento-filtros">
-                                <label for="formatacao-cnpj">Formatação</label>
-                                <select id="formatacao-cnpj" class="combobox" required>
-                                </select>
-                            </div>
-                            <div class="btn-gerar">
-                                <input type="button" id="bt-gerar-cnpj" value="Gerar" onclick="gerarCnpj()">
-                            </div>
-                        </div>
-                    </div>
-                </fieldset>
-
-                <div class="retorno-container container">
-                    <textarea class="retorno" id="retorno-cnpj" disabled></textarea>
-                </div>
-                <div class="btn-copiar" id="btn-copiar-cnpj">
-                    Copiar
-                </div>
-            </div>
-        </div>
-
-
-
-        <div class="modal-container" id="modal-telefone">
-            <div class="modal container">
-                <div class="fechar">
-                    <button class="btn-fechar"
-                        onclick="abrirEfechar('modal-telefone'), scriptsFecharGeradorTelefone()">X</button>
-                </div>
-                <h2>Gerador de Telefone</h2>
-                <fieldset>
-                    <legend>Filtros</legend>
-                    <div class="filtros" id="geradorTelefone">
-                        <div class="agrupador-mobile">
-                            <div class="elemento-filtros telefone">
-                                <label for="uf-telefone">Uf</label>
-                                <select id="uf-telefone" class="combobox" required>
-                                </select>
-                            </div>
-
-                            <div class="elemento-filtros">
-                                <label for="operadora-telefone">Operadora</label>
-                                <select id="operadora-telefone" class="combobox" required>
-                                </select>
-                            </div>
-                            <div class="elemento-filtros">
-                                <label for="quantidade-telefones">Quantidade*</label>
-                                <input type="number" id="quantidade-telefones" placeholder="Quantidade" min="1"
-                                    max=400000 required
-                                    onfocusout="limitarNumeroMaximo('quantidade-telefones', 400000)">
-                            </div>
-
-                        </div>
-                        <div class="agrupador-mobile">
-                            <div class="elemento-filtros">
-                                <label for="formatacao-telefones">Formatação</label>
-                                <select id="formatacao-telefones" class="combobox" required>
-                                </select>
-                            </div>
-                            <div class="btn-gerar">
-                                <input type="button" id="bt-gerar-telefones" value="Gerar" onclick="gerarTelefone()">
-                            </div>
-                        </div>
-                    </div>
-                </fieldset>
-
-                <div class="retorno-container container">
-                    <textarea class="retorno" id="retorno-telefone" disabled></textarea>
-                </div>
-                <div class="btn-copiar" id="btn-copiar-telefone">
-                    Copiar
-                </div>
-            </div>
-        </div> -->
     </div>
-
 
     <script src="./js/script.js"></script>
     <script src="./js/nomes.js"></script>

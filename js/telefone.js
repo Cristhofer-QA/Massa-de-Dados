@@ -1,9 +1,9 @@
 function gerarTelefone() {
-    const uf = document.querySelector('#uf-telefone').value;
-    const operadora = document.querySelector('#operadora-telefone').value;
-    const formatacao = document.querySelector('#formatacao-telefones').value;
-    const quantidade = document.querySelector('#quantidade-telefones').value;
-    const imprimir = document.querySelector('#retorno-telefone');
+    const uf = document.querySelector('#filtro-uf').value;
+    const operadora = document.querySelector('#filtro-operadora').value;
+    const formatacao = document.querySelector('#filtro-formatacao-telefone').value;
+    const quantidade = document.querySelector('#filtro-quantidade').value;
+    const imprimir = document.querySelector('#textArea');
 
     if (formatacao != 0 && operadora != 0 && quantidade != '' && uf != 0) {
         const telefone = new MultiplosTelefones(formatacao, uf, operadora, quantidade);
@@ -184,7 +184,14 @@ class MultiplosTelefones {
     gerarMultiplosTelefones(formatação, uf, operadora, quantidade) {
         for (let i = 0; i < quantidade; i++) {
             const telefone = new TelefoneFormatado(formatação, uf, operadora);
-            this.listaTelefones = this.listaTelefones + telefone.telefoneFormatado + "\n";
+
+            if (i < quantidade - 1) {
+                this.listaTelefones = this.listaTelefones + telefone.telefoneFormatado + "\n";
+            } else {
+                this.listaTelefones = this.listaTelefones + telefone.telefoneFormatado;
+            }
+
+            
         };
     };
 };

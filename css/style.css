@@ -2,7 +2,7 @@
     --background-header: rgb(33, 37, 41);
     --background-modal: rgb(10, 9, 8);
     --background-modal-glass: rgba(10, 9, 8, 0.37);
-    --letra-padrao:  rgb(255, 255, 255);
+    --letra-padrao: rgb(255, 255, 255);
 }
 
 * {
@@ -18,18 +18,18 @@
 
 ::-webkit-scrollbar {
     width: 15px;
-  }
-  
-  ::-webkit-scrollbar-track {
+}
+
+::-webkit-scrollbar-track {
     background: var(--background-header);
     border-radius: 15px;
-  }
-  
-  ::-webkit-scrollbar-thumb {
+}
+
+::-webkit-scrollbar-thumb {
     background-color: var(--background-modal);
     border-radius: 20px;
     border: 2px solid var(--background-header);
-  }
+}
 
 
 input[type=number]::-webkit-inner-spin-button,
@@ -44,7 +44,7 @@ select:focus {
     border: 2px solid var(--background-header);
 }
 
-.mensagem-inicial{
+.mensagem-inicial {
     display: flex;
     width: 100%;
     height: 100%;
@@ -55,13 +55,19 @@ select:focus {
     text-align: center;
 }
 
-input[type=button] {
-    background: none;
-    border: 0px;
+.botao {
     cursor: pointer;
     width: 100%;
     height: 70%;
-    background-color: var(--background-header);
+    background-color: var(--letra-padrao);
+    color: var(--background-header);
+    font-weight: 600;
+    border: 1px solid var(--letra-padrao);
+}
+
+.botao:hover {
+    background-color: var(--background-modal-glass);
+    border: 1px solid var(--letra-padrao);
     color: var(--letra-padrao);
 }
 
@@ -85,7 +91,7 @@ h2 {
     cursor: default;
 }
 
-fieldset{
+fieldset {
     padding: 10px;
     border-radius: 7px;
     display: flex;
@@ -95,13 +101,13 @@ fieldset{
     width: 100%;
 }
 
-legend{
+legend {
     margin-left: 15px;
     padding: 0px 10px;
     cursor: default;
 }
 
-.top-modal{
+.top-modal {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -133,14 +139,17 @@ legend{
 #sobre-nos {
     height: 100%;
     display: flex;
-    align-items: center;justify-content: center;
+    align-items: center;
+    justify-content: center;
     padding: 10px;
     border-radius: 8px;
     cursor: pointer;
+    border: 1px solid var(--background-header);
 }
 
 #sobre-nos:hover {
     background-color: var(--background-modal);
+    border: 1px solid var(--letra-padrao);
 }
 
 li {
@@ -154,7 +163,7 @@ li {
     position: relative;
 }
 
-.background{
+.background {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -192,7 +201,7 @@ li {
 #menu ul {
     height: 100%;
     overflow-y: auto;
-    border-right: 1px solid ;
+    border-right: 1px solid;
     padding: 10px 0px;
 }
 
@@ -215,7 +224,7 @@ li {
     margin-top: 10px;
 }
 
-#menu-hambuguer img{
+#menu-hambuguer img {
     height: 25px;
     width: 25px;
     cursor: pointer;
@@ -231,7 +240,7 @@ li {
 }
 
 .menu-open {
-    display: block!important;
+    display: block !important;
 }
 
 .menu-clicado {
@@ -240,7 +249,7 @@ li {
     color: var(--background-modal) !important;
 }
 
-.gerador{
+.gerador {
     width: 100%;
     height: 100%;
     display: flex;
@@ -249,7 +258,7 @@ li {
     z-index: 4;
 }
 
-.modal{
+.modal {
     min-width: 600px;
     max-width: 800px;
     display: flex;
@@ -258,12 +267,12 @@ li {
     flex-direction: column;
     min-height: 50%;
     max-height: 90%;
-    background:var(--background-modal-glass);
+    background: var(--background-modal-glass);
     /* box-shadow: 0px 0px 20px 9px rgb(107 107 107 / 37%); */
-    backdrop-filter: blur( 35px );
-    -webkit-backdrop-filter: blur( 35px );
+    backdrop-filter: blur(35px);
+    -webkit-backdrop-filter: blur(35px);
     border-radius: 20px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    border: 1px solid rgba(255, 255, 255, 0.18);
     padding: 35px 60px;
     gap: 15px;
 }
@@ -294,24 +303,16 @@ li {
     cursor: default
 }
 
-.btn-copiar {
+#btn-copiar {
     display: flex;
-    width: 100%;
     align-items: center;
     justify-content: center;
     padding: 5px 0px;
-    cursor: pointer;
-    background-color: var(--background-header);
-    border: 2px solid var(--background-header);
-    border-radius: 50px;
+    border-radius: 7px;
+    max-height: 40px;
 }
 
-.btn-copiar:hover {
-    background-color: var(--background-modal);
-    border: 2px solid var(--background-header);
-}
-
-.agrupador-mobile{
+.agrupador-mobile {
     width: 100%;
     height: auto;
     gap: 15px;
@@ -330,12 +331,15 @@ label {
     color: var(--letra-padrao);
 }
 
-input, option, select {
+input,
+option,
+select {
     color: var(--background-modal);
     width: 100%;
 }
 
-input, select {
+input,
+select {
     color: var(--background-modal);
     width: 100%;
     height: 30px;
@@ -345,22 +349,17 @@ input, select {
     cursor: pointer;
 }
 
-.btn-gerar{
+.btn-gerar {
     width: 100px;
     display: flex;
     align-items: end;
-}
-
-#bt-gerar-cpf:hover {
-    background-color: var(--background-modal);
-    border: 2px solid var(--background-header);
 }
 
 .modal-container {
     display: none;
 }
 
-.loading{
+.loading {
     width: 27px;
     height: 27px;
     border-radius: 50px;
@@ -370,7 +369,7 @@ input, select {
 }
 
 @keyframes loading {
-    to{
+    to {
         transform: rotate(360deg);
     }
 }
@@ -401,8 +400,8 @@ input, select {
         position: absolute;
     }
 
-    
-    .modal{
+
+    .modal {
         width: 90%;
         height: 90%;
         min-width: 250px;
@@ -410,7 +409,7 @@ input, select {
         padding: 15px;
     }
 
-    .gerador{
+    .gerador {
         padding-top: 40px;
     }
 

@@ -1,8 +1,8 @@
 function gerarCnpj() {
-    const numeroFilial = document.querySelector('#quantidade-matriz').value;
-    const formatação = document.querySelector('#formatacao-cnpj').value;
-    const quantidade = document.querySelector('#quantidade-cnpj').value;
-    const imprimir = document.querySelector('#retorno-cnpj');
+    const numeroFilial = document.querySelector('#filtro-filial').value;
+    const formatação = document.querySelector('#filtro-formacatao-cpfCnpj').value;
+    const quantidade = document.querySelector('#filtro-quantidade').value;
+    const imprimir = document.querySelector('#textArea');
 
     if (quantidade != '') {
         const cnpj = new GerarMultiplosCnpj(numeroFilial, formatação, quantidade);
@@ -113,7 +113,12 @@ class GerarMultiplosCnpj {
     gerarMultiplosCnpj(numeroFilial, formatação, quantidade) {
         for (let i = 0; i < quantidade; i++) {
             const cnpj = new FormatadorCnpj(formatação, numeroFilial)
-            this.listaCnpj = this.listaCnpj + cnpj.cnpjFormatado + "\n";
+
+            if (i < quantidade - 1) {
+                this.listaCnpj = this.listaCnpj + cnpj.cnpjFormatado + "\n";
+            } else {
+                this.listaCnpj = this.listaCnpj + cnpj.cnpjFormatado;
+            };
         };
     };
 };
