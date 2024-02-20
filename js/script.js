@@ -3,7 +3,7 @@ document.getElementById('geradorNome').addEventListener('click', gerarModalNome)
 document.getElementById('geradorCnpj').addEventListener('click', gerarModalCnpj);
 document.getElementById('geradorTelefone').addEventListener('click', gerarModalTelefone);
 document.getElementById('menu-hambuguer').addEventListener('click', abrirEfecharMenu);
-
+document.getElementById('sobre-site').addEventListener('click',preencherModalSobreNos)
 
 
 /******************* Modais *******************/
@@ -58,8 +58,7 @@ function gerarModalTelefone() {
     criarBotaoGerar('agrupador-2', 'gerarTelefone()');
     criarCampoRetornoDados();
     criarBotaoCopiar();
-}
-
+};
 
 
 
@@ -223,7 +222,10 @@ function criarComboFormatacaTelefone(selectorCampo) {
 
 /******************* Elementos modal *******************/
 function limparModal() {
+    let modalSobreNos = document.querySelector('#sobre-nos');
+    modalSobreNos.classList.add('close')
     let modal = document.getElementById('modal')
+    modal.classList.remove('close')
     modal.innerHTML = ''
 };
 
@@ -324,6 +326,35 @@ function abrirEfecharMenu() {
     let menu = document.getElementById('menu');
     menu.classList.toggle('menu-open');
 };
+
+function preencherModalSobreNos() {
+    fecharModalGerador();
+    let modalSobreNos = document.querySelector('#sobre-nos');
+    modalSobreNos.innerHTML = '';
+    let divContainer = document.createElement('div');
+    divContainer.setAttribute('id', 'divContainer');
+
+    let titulo = document.createElement('h1');
+    titulo.innerText= 'Sobre o site';
+    let corpo = document.createElement('p');
+    corpo.innerText = `Bem-vindo ao nosso site, sua plataforma de geração de massa de dados para testes de software. Desenvolvido por um profissional de QA, entendemos as necessidades específicas e os desafios enfrentados por aqueles que trabalham na garantia da qualidade.
+
+    Nosso principal objetivo é fornecer a você, profissional de QA, uma ferramenta que simplifique e otimize o processo de teste.
+    
+    É importante ressaltar que nosso site é projetado exclusivamente para uso como suporte em testes de qualidade. Não se destina a ser usado em ambientes de produção ou para qualquer finalidade além de testes e validação de sistemas.
+            
+    Obrigado por escolher nosso site como seu parceiro de confiança em testes de qualidade.`
+    modalSobreNos.appendChild(divContainer);
+    divContainer.appendChild(titulo);
+    divContainer.appendChild(corpo);
+};
+
+function fecharModalGerador() {
+    let modalGerador = document.querySelector('#modal');
+    modalGerador.classList.add('close');
+    let modalSobreNos = document.querySelector('#sobre-nos');
+    modalSobreNos.classList.remove ('close');
+}
 
 {
     let itensMenu = document.querySelectorAll('.item-menu');
