@@ -3,7 +3,7 @@ document.getElementById('geradorNome').addEventListener('click', gerarModalNome)
 document.getElementById('geradorCnpj').addEventListener('click', gerarModalCnpj);
 document.getElementById('geradorTelefone').addEventListener('click', gerarModalTelefone);
 document.getElementById('menu-hambuguer').addEventListener('click', abrirEfecharMenu);
-document.getElementById('sobre-site').addEventListener('click',preencherModalSobreNos)
+document.getElementById('sobre-site').addEventListener('click', preencherModalSobreNos)
 
 
 /******************* Modais *******************/
@@ -89,7 +89,7 @@ function gerarFiltroFormatacaoNome() {
 function gerarFiltroQuantidade() {
     gerarDivElementosFiltros('agrupador-1', 'quantidade')
     gerarInputsTipoNumero('quantidade', 'filtro-quantidade', 'Quantidade*');
-    inserirOnfocusoutCampo('filtro-quantidade','limitarNumeroMaximo("filtro-quantidade", 400000)')
+    inserirOnfocusoutCampo('filtro-quantidade', 'limitarNumeroMaximo("filtro-quantidade", 400000)')
     inserirPlaceholder('filtro-quantidade', 'Quantidade')
 };
 
@@ -112,7 +112,7 @@ function gerarFiltroNumeroFilial() {
     inserirOnfocusoutCampo('filtro-filial', 'limitarNumeroMaximo("filtro-filial", 9999)')
 };
 
-function  gerarFiltroOperadora() {
+function gerarFiltroOperadora() {
     gerarDivElementosFiltros('agrupador-1', 'operadora');
     gerarInputsTipoSelect('operadora', 'filtro-operadora', 'Operadora');
     criarComboOperadora('filtro-operadora')
@@ -211,7 +211,7 @@ function criarComboOperadora(selectorCampo) {
 };
 
 function criarComboFormatacaTelefone(selectorCampo) {
-    let formatacao = ['DDD + telefone, com formatação','DDD + telefone, sem formatação','Apenas telefone, com formatação','Apenas telefone, sem formatação','Apenas DDD, com formatação','Apenas DDD, sem formatação']
+    let formatacao = ['DDD + telefone, com formatação', 'DDD + telefone, sem formatação', 'Apenas telefone, com formatação', 'Apenas telefone, sem formatação', 'Apenas DDD, com formatação', 'Apenas DDD, sem formatação']
     criarOptionsSelectValorDiferenteTexto(selectorCampo, formatacao);
 }
 
@@ -266,9 +266,9 @@ function gerarDivAgrupadorMobile(quantidadeDivs) {
 
 function criarCampoRetornoDados() {
     let elementoPai = document.getElementById('modal')
-    let divRetorno  = document.createElement('div');
-    let background  = document.createElement('div');
-    let textArea    = document.createElement('textarea');
+    let divRetorno = document.createElement('div');
+    let background = document.createElement('div');
+    let textArea = document.createElement('textarea');
     background.setAttribute('class', 'background');
     background.setAttribute('id', 'background-modal');
     divRetorno.setAttribute('class', 'retorno-container');
@@ -329,13 +329,15 @@ function abrirEfecharMenu() {
 
 function preencherModalSobreNos() {
     fecharModalGerador();
+    removerMenuClicado();
+
     let modalSobreNos = document.querySelector('#sobre-nos');
     modalSobreNos.innerHTML = '';
     let divContainer = document.createElement('div');
     divContainer.setAttribute('id', 'divContainer');
 
     let titulo = document.createElement('h1');
-    titulo.innerText= 'Sobre o site';
+    titulo.innerText = 'Sobre o site';
     let corpo = document.createElement('p');
     corpo.innerText = `Bem-vindo ao nosso site, sua plataforma de geração de massa de dados para testes de software. Desenvolvido por um profissional de QA, entendemos as necessidades específicas e os desafios enfrentados por aqueles que trabalham na garantia da qualidade.
 
@@ -353,8 +355,18 @@ function fecharModalGerador() {
     let modalGerador = document.querySelector('#modal');
     modalGerador.classList.add('close');
     let modalSobreNos = document.querySelector('#sobre-nos');
-    modalSobreNos.classList.remove ('close');
+    modalSobreNos.classList.remove('close');
 }
+
+function removerMenuClicado() {
+    let itemMenu = document.querySelectorAll('.item-menu');
+    for(let i = 0; i<itemMenu.length; i++) {
+        let classe = itemMenu[i].className;
+        if(classe.includes('menu-clicado')) {
+            itemMenu[i].classList.remove('menu-clicado')
+        }
+    };
+};
 
 {
     let itensMenu = document.querySelectorAll('.item-menu');
