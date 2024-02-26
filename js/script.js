@@ -2,6 +2,7 @@ document.getElementById('geradorCpf').addEventListener('click', gerarModalCpf);
 document.getElementById('geradorNome').addEventListener('click', gerarModalNome);
 document.getElementById('geradorCnpj').addEventListener('click', gerarModalCnpj);
 document.getElementById('geradorTelefone').addEventListener('click', gerarModalTelefone);
+document.getElementById('geradorEndereco').addEventListener('click', gerarModalEndereco);
 document.getElementById('menu-hambuguer').addEventListener('click', abrirEfecharMenu);
 document.getElementById('sobre-site').addEventListener('click', preencherModalSobreNos);
 
@@ -59,7 +60,20 @@ function gerarModalTelefone() {
     criarCampoRetornoDados();
     criarBotaoCopiar();
 };
-
+/*
+function gerarModalEndereco() {
+    limparModal();
+    gerarTopoModal('Gerador de telefones');
+    gerarFieldsetFiltros();
+    gerarDivAgrupadorMobile(2);
+    gerarFiltroUF();
+    gerarFiltroOperadora()
+    gerarFiltroQuantidade();
+    gerarFiltroFormatacaoTelefone()
+    criarBotaoGerar('agrupador-2', 'gerarTelefone()');
+    criarCampoRetornoDados();
+    criarBotaoCopiar();
+};*/
 
 
 

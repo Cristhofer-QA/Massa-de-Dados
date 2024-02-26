@@ -403,6 +403,12 @@ select {
     background-color: rgb(17 255 20);
 }
 
+.copiado:hover{
+    background-color: rgb(17 255 20);
+    color: var(--background-header);
+    border: 1px solid var(--letra-padrao);
+}
+
 
 @keyframes loading {
     to {
