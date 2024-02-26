@@ -2,7 +2,6 @@ document.getElementById('geradorCpf').addEventListener('click', gerarModalCpf);
 document.getElementById('geradorNome').addEventListener('click', gerarModalNome);
 document.getElementById('geradorCnpj').addEventListener('click', gerarModalCnpj);
 document.getElementById('geradorTelefone').addEventListener('click', gerarModalTelefone);
-document.getElementById('geradorEndereco').addEventListener('click', gerarModalEndereco);
 document.getElementById('menu-hambuguer').addEventListener('click', abrirEfecharMenu);
 document.getElementById('sobre-site').addEventListener('click', preencherModalSobreNos);
 
