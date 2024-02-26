@@ -3,7 +3,7 @@ document.getElementById('geradorNome').addEventListener('click', gerarModalNome)
 document.getElementById('geradorCnpj').addEventListener('click', gerarModalCnpj);
 document.getElementById('geradorTelefone').addEventListener('click', gerarModalTelefone);
 document.getElementById('menu-hambuguer').addEventListener('click', abrirEfecharMenu);
-document.getElementById('sobre-site').addEventListener('click', preencherModalSobreNos)
+document.getElementById('sobre-site').addEventListener('click', preencherModalSobreNos);
 
 
 /******************* Modais *******************/
@@ -286,13 +286,13 @@ function criarCampoRetornoDados() {
 /******************* Botões *******************/
 function criarBotaoGerar(idElementoPai, funçãoGerar) {
     let elementoPai = document.getElementById(idElementoPai);
-    let divBotao = document.createElement('div')
-    let botao = document.createElement('input')
+    let divBotao = document.createElement('div');
+    let botao = document.createElement('input');
     botao.type = 'button';
     botao.setAttribute('id', 'botao-gerar');
     botao.setAttribute('class', 'botao');
     botao.value = 'Gerar'
-    botao.setAttribute('onclick', funçãoGerar)
+    botao.setAttribute('onclick', funçãoGerar + '; removerBotaoCopiado()')
     divBotao.setAttribute('class', 'btn-gerar')
     elementoPai.append(divBotao);
     divBotao.appendChild(botao)
@@ -308,6 +308,14 @@ function criarBotaoCopiar() {
     elementoPai.append(botaoCopiar)
 };
 
+function removerBotaoCopiado() {
+    let botaoCopiar = document.getElementById('btn-copiar');
+    if(botaoCopiar.className.includes('copiado')) {
+        botaoCopiar.classList.remove('copiado');
+        botaoCopiar.innerText = 'Copiar';
+    };
+};
+
 /**************************************************/
 
 
@@ -319,7 +327,9 @@ function copiar() {
         return window.alert('Nada a ser copiado!!');
     };
     navigator.clipboard.writeText(retorno);
-    window.alert('Conteúdo copiado!!');
+    let botaoCopiar = document.getElementById('btn-copiar')
+    botaoCopiar.classList.add('copiado');
+    botaoCopiar.innerText = 'Copiado!';
 };
 
 function abrirEfecharMenu() {
